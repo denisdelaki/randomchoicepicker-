@@ -38,20 +38,37 @@ function createTags(input) {
 }
 //create a random select function
 function randomSelect() {
-    // the the time to 30 secs
-    const times = 30
-    //create a variable to store the interval and use the interval function 
-    const interval = setInterval(() => {
-        //pick a random  tag
-        const randomTag = pickRandomTag()
+  // the the time to 30 secs
+  const times = 30;
+  //create a variable to store the interval and use the interval function
+  const interval = setInterval(() => {
+    //pick a random  tag
+    const randomTag = pickRandomTag();
+    //highlight the picked tag
+    highlightTag(randomTag);
+
+    setTimeout(() => {
+      unhighlightTag(randomTag);
     }, 100);
+  }, 100);
+  setTimeout(() => {
+    clearInterval(interval);
+    //set timeout
+    setTimeout(() => {
+      const randomTag = pickRandomTag();
+      highlightTag(randomTag);
+    }, 100);
+  }, times * 100);
 }
 //create te pickRandomTag
 function pickRandomTag() {
-    const tags = document.querySelectorAll('.tag')
-    return tags[Math.floor(Math.random()*tags.length)]
+  const tags = document.querySelectorAll(".tag");
+  return tags[Math.floor(Math.random() * tags.length)];
 }
 //create function to highlight and unhighlight tags
 function highlightTag(tag) {
-    tag.classList.add ('highlight')
+  tag.classList.add("highlight");
+}
+function unhighlightTag(tag) {
+  tag.classList.remove("highlight");
 }
