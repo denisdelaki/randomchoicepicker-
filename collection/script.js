@@ -41,5 +41,17 @@ function randomSelect() {
     // the the time to 30 secs
     const times = 30
     //create a variable to store the interval and use the interval function 
-    
+    const interval = setInterval(() => {
+        //pick a random  tag
+        const randomTag = pickRandomTag()
+    }, 100);
+}
+//create te pickRandomTag
+function pickRandomTag() {
+    const tags = document.querySelectorAll('.tag')
+    return tags[Math.floor(Math.random()*tags.length)]
+}
+//create function to highlight and unhighlight tags
+function highlightTag(tag) {
+    tag.classList.add ('highlight')
 }
